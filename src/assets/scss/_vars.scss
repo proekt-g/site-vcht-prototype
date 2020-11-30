@@ -1,0 +1,33 @@
+$default-font: "Graphik LCG";
+$content-width: 1024px;
+$heightHeader: 92px;
+$heightFooter: 120px;
+$minHeightMain: calc(100vh - (#{$heightHeader} + #{$heightFooter}));
+$mainColor: #000;
+$mainWeight: 700;
+$mainSize: 16px;
+:root {
+    --bg-color: #eceef5;
+
+    --light-grey-type-one: #dddfe6;
+    --grey-type-one: #6d6f73;
+    --grey-type-two: #787c80;
+    --grey-type-three: #e7e8ea;
+    --grey-type-four: #9fa2a7;
+    --grey-type-five: #c4c4c4;
+    --grey-type-six: #999999;
+    --grey-type-seven: #b6b9bf;
+    --grey-type-eight: #5c6166;
+    --grey-type-night: #eff4f9;
+    --grey-type-ten: #b3b3b3;
+    --grey-type-eleven: #f0f0f0;
+    --grey-type-twelve: #e8e9eb;
+    --red-type-one: #dc3701;
+    --dark-blue-type-one: #0454be;
+    --dark-blue-type-two: #121d33;
+    --light-green-type-one: #00be6f;
+    --gold-type-one: #ffcc00;
+    --black-type-one: #2e3033;
+    --black-type-two: #353637;
+    --black-type-hree: #4d4d4d;
+}
