@@ -46,6 +46,24 @@ window.addEventListener("load", function () {
         ajaxRequest("program-events-form", "test.php")
     })
     // /Фильтр на странице program-events.html
+    // Фильтр на странице speakers.html (поиск)
+    $("#speakers-search").on("input submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("speakers-search", "test.php")
+    })
+    // /Фильтр на странице speakers.html (поиск)
+    // Фильтр на странице speakers.html (сортировка спикеров)
+    $("#speakers-sort").on("input submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("speakers-sort", "test.php")
+    })
+    // /Фильтр на странице speakers.html (сортировка спикеров)
+    // Фильтр на странице profile.html 
+    $("#edit-form").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("edit-form", "test.php")
+    })
+    // /Фильтр на странице profile.html 
     $("button.menu__desktop-element").on("click", function () {
         $(this).toggleClass('menu__desktop-element--open')
         $('.header-modal__nav').fadeToggle(400)
@@ -137,6 +155,10 @@ window.addEventListener("load", function () {
             $('.main__content-more-text').text($('.main__content-more-text').data('switch-text-end'))
         }
     })
+    $('.participants__toggle-button').on('click', function () {
+        $('.participants__toggle-button').removeClass('participants__toggle-button--active')
+        $(this).addClass('participants__toggle-button--active')
+    })
     // /event
     // ----------------------------------------------
     // unique function
@@ -218,7 +240,7 @@ window.addEventListener("load", function () {
         initializeClock('timer', deadline);
     }
     // /ТАЙМЕР
-    $(window).width() <= 700 && document.querySelector('.swiper-container') && new Swiper('.swiper-container', {
+    $(window).width() <= 700 && document.querySelector('.event__swiper') && new Swiper('.swiper-container', {
         slidesPerView: 'auto',
         spaceBetween: 8,
         pagination: {
@@ -228,5 +250,7 @@ window.addEventListener("load", function () {
         // autoHeight: true
     })
     $(window).width() <= 1100 && $('.main__recommendation-block').appendTo('.recommendation')
+    $(window).width() <= 900 && $('.interesting .section-head__link').appendTo('.interesting .container')
+    $(window).width() <= 900 && $('.webinars .section-head__link').appendTo('.webinars .container')
     // /Page load
 });

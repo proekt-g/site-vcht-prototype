@@ -1,0 +1,78 @@
+.speaker {
+    .head {
+        &__inner {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            @media (max-width: 700px) {
+                display: block;
+            }
+        }
+        &__avatar {
+            flex: 0 0 241px;
+            width: 241px;
+            border-radius: 10px;
+            height: 241px;
+            margin-right: 40px;
+            @media (max-width: 900px) {
+                margin-right: 26px;
+                height: 224px;
+                flex: 0 0 224px;
+                width: 224px;
+            }
+            @media (max-width: 700px) {
+                width: 100%;
+                height: calc(100vw - 32px);
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+        &__text {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 26px;
+            margin: 5px 0 25px;
+            @media (max-width: 900px) {
+                font-size: 16px;
+                line-height: 24px;
+                margin: 5px 0 30px;
+            }
+            @media (max-width: 700px) {
+                margin: 5px 0 20px;
+            }
+        }
+        &__button {
+            display: inline-flex;
+        }
+    }
+    .content {
+        margin-top: 60px;
+        @media (max-width: 900px) {
+            margin-top: 40px;
+        }
+        &__title {
+            font-family: Gilroy;
+            font-size: 24px;
+            line-height: 30px;
+            letter-spacing: 0.01em;
+            margin-bottom: 25px;
+            @media (max-width: 900px) {
+                margin-bottom: 20px;
+            }
+            @media (max-width: 500px) {
+                display: none;
+            }
+        }
+        &__more {
+            margin: 0 auto;
+            @media (max-width: 500px) {
+                width: auto;
+            }
+            .button__back {
+                @media (max-width: 500px) {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

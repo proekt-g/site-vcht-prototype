@@ -1,0 +1,24 @@
+.program-favorites {
+    .content {
+        margin-top: 50px;
+        &__more {
+            display: flex;
+            justify-content: center;
+            margin: 25px auto 0;
+            @media (max-width: 500px) {
+                width: auto;
+            }
+            .button__back {
+                @media (max-width: 500px) {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    .container--card {
+        margin-top: 34px;
+        @media (max-width: 900px) {
+            margin-top: 19px;
+        }
+    }
+}

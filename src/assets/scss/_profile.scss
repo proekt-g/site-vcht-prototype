@@ -1,0 +1,152 @@
+.profile {
+    .head {
+        &__title {
+            font-family: Gilroy;
+            font-size: 60px;
+            line-height: 70px;
+            margin-top: 22px;
+            @media (max-width: 900px) {
+                font-size: 32px;
+                line-height: 40px;
+                margin-top: 30px;
+            }
+            @media (max-width: 500px) {
+                margin-top: 20px;
+            }
+        }
+    }
+    .edit {
+        margin-top: 41px;
+        @media (max-width: 900px) {
+            margin-top: 35px;
+        }
+        @media (max-width: 700px) {
+            margin-top: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            @media (max-width: 700px) {
+                display: block;
+            }
+        }
+        &__avatar {
+            flex: 0 0 241px;
+            text-align: center;
+            margin-right: 16px;
+            @media (max-width: 900px) {
+                flex: 0 0 222px;
+            }
+            @media (max-width: 700px) {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            &-picture {
+                width: 241px;
+                height: 241px;
+                border-radius: 50%;
+                @media (max-width: 900px) {
+                    width: 222px;
+                    height: 222px;
+                }
+                @media (max-width: 700px) {
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+            &-button {
+                margin-top: 30px;
+                display: inline-block;
+                cursor: pointer;
+                @media (max-width: 900px) {
+                    margin-top: 25px;
+                }
+                @media (max-width: 500px) {
+                    margin-top: 20px;
+                    width: auto;
+                }
+                &:hover {
+                    border-radius: 10px;
+                }
+                &-input {
+                    position: absolute;
+                    left: 0;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+        }
+        &__form {
+            flex: 0 1 464px;
+            margin-top: 18px;
+            margin-right: auto;
+            margin-left: 100px;
+            @media (max-width: 900px) {
+                margin-top: 0;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+        &__text {
+            font-family: Gilroy;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.02em;
+            margin-bottom: 4px;
+        }
+        &__input {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 0 24px;
+            display: block;
+            line-height: 50px;
+            height: 50px;
+            margin-bottom: 14px;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 20px;
+            font-feature-settings: "cpsp" on;
+            width: 100%;
+            &::placeholder {
+                font-family: "Graphik LCG";
+                font-size: 15px;
+                line-height: 20px;
+                font-feature-settings: "cpsp" on;
+                font-weight: normal;
+                color: var(--grey-type-seventeen);
+            }
+        }
+        &__buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            @media (max-width: 900px) {
+                display: block;
+            }
+            @media (max-width: 500px) {
+                margin-top: 45px;
+            }
+        }
+        &__button {
+            @media (max-width: 900px) {
+                width: 100%;
+                justify-content: center;
+            }
+            &:hover {
+                border-radius: 10px;
+            }
+            &:last-child {
+                background-color: var(--light-blue-type-five);
+                box-shadow: none;
+                @media (max-width: 900px) {
+                    margin-top: 20px;
+                }
+                &:hover {
+                    background-color: #fff;
+                    box-shadow: 0 6px 20px rgba(66, 71, 118, 0.22);
+                }
+            }
+        }
+    }
+}

@@ -148,6 +148,12 @@
         &__more {
             text-align: center;
             margin: 40px auto 0;
+            @media (max-width: 500px) {
+                width: auto;
+            }
+            .button__back {
+                margin-left: 10px;
+            }
         }
     }
 }
