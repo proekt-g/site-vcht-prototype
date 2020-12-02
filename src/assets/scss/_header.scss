@@ -160,6 +160,7 @@
                 height: calc(100vh - 93px);
                 @media (max-width: 700px) {
                     top: 74px;
+                    height: calc(100vh - 74px);
                 }
             }
             &--scroll {

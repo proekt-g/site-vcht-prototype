@@ -1,0 +1,95 @@
+.footer {
+    margin-top: 120px;
+    background-color: var(--footer-color);
+    @media (max-width: 900px) {
+        margin-top: 80px;
+    }
+    @media (max-width: 500px) {
+        margin-top: 65px;
+    }
+    &__head {
+        display: flex;
+        padding: 20px 0;
+        align-items: center;
+        max-width: calc(#{$content-width} + 20px);
+        width: 100%;
+        margin: 0 auto;
+        padding-right: 10px;
+        padding-left: 10px;
+        @media (max-width: 900px) {
+            padding-right: 32px;
+            padding-left: 32px;
+        }
+        @media (max-width: 700px) {
+            display: block;
+            text-align: center;
+        }
+        @media (max-width: 500px) {
+            padding: 35px 16px 20px;
+        }
+        &-title {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &__links {
+        flex-grow: 1;
+        margin-left: 16px;
+        display: flex;
+        @media (max-width: 700px) {
+            margin: 10px 0 28px;
+            justify-content: center;
+        }
+    }
+    &__link {
+        margin-right: 16px;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    &__down {
+        padding: 20px 0;
+        @media (max-width: 900px) {
+            padding: 10px 0;
+        }
+        @media (max-width: 700px) {
+            text-align: center;
+        }
+        @media (max-width: 500px) {
+            padding: 20px 0 35px;
+        }
+    }
+    &__down {
+        padding-right: calc(((100vw - #{$content-width}) / 2) - 10px);
+        padding-left: calc(((100vw - #{$content-width}) / 2) - 10px);
+        border-top: 1px solid var(--light-blue-type-one);
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: 900px) {
+            padding-right: 32px;
+            padding-left: 32px;
+        }
+        @media (max-width: 700px) {
+            display: block;
+        }
+        @media (max-width: 500px) {
+            padding-right: 16px;
+            padding-left: 16px;
+        }
+    }
+    &__cop {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        color: var(--grey-type-thirteen);
+        &:first-child {
+            margin-right: 20px;
+            @media (max-width: 700px) {
+                margin-right: 0;
+                margin-bottom: 65px;
+            }
+        }
+    }
+}

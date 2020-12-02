@@ -1,8 +1,8 @@
-// document.onreadystatechange = function() {
-//     if (document.readyState === "interactive" ) {
-
-//     }
-// }
+document.onreadystatechange = function () {
+    if (document.readyState === "interactive") {
+        $(window).width() <= 700 && $('.main__content-head-ui').appendTo('.main__content-timer')
+    }
+}
 window.addEventListener("load", function () {
     // variables
     // /variables
@@ -121,7 +121,22 @@ window.addEventListener("load", function () {
     $('.content__more').on('click', () => {
         $('.card--hidden').removeClass('card--hidden')
     })
-    // $('.share').on('click',)
+    $('.main__content-more').on('click', () => {
+        $('.main__content-more').toggleClass('main__content-more--open')
+        if (!$('.main__content-text--active').length) {
+            $('.main__content-text').toggleClass('main__content-text--active')
+            const el = $('.main__content-text'),
+                curHeight = el.height(),
+                autoHeight = el.css('height', 'auto').height();
+            el.height(curHeight).animate({ height: autoHeight }, 200);
+            $('.main__content-more-text').text($('.main__content-more-text').data('switch-text-start'))
+
+        } else {
+            $('.main__content-text').toggleClass('main__content-text--active')
+            $('.main__content-text').css('height', $('.main__content-text').data('text-height'))
+            $('.main__content-more-text').text($('.main__content-more-text').data('switch-text-end'))
+        }
+    })
     // /event
     // ----------------------------------------------
     // unique function
@@ -149,5 +164,69 @@ window.addEventListener("load", function () {
         })
     }
     // /Механика добавления крошкой даты на планшетах
+    document.querySelector('.main__recommendation-block') && $(window).width() > 1100 && OverlayScrollbars(document.querySelectorAll(".main__recommendation-block"), {
+        paddingAbsolute: true
+    });
+    // ТАЙМЕР
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+            'total': t,
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector('#timer-days');
+        var hoursSpan = clock.querySelector('#timer-hours');
+        var minutesSpan = clock.querySelector('#timer-minutes');
+        var secondsSpan = clock.querySelector('#timer-seconds');
+
+        function updateClock() {
+            var t = getTimeRemaining(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clock.classList.add('main__content-start--finish')
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+    if (document.getElementById('timer')) {
+        const deadline = `
+            ${$('#timer').data('timer-month')} 
+            ${$('#timer').data('timer-day')} 
+            ${$('#timer').data('timer-year')} 
+            ${$('#timer').data('timer-hours')}:
+            ${$('#timer').data('timer-minutes')}:
+            ${$('#timer').data('timer-seconds')} GMT+0300`;
+        initializeClock('timer', deadline);
+    }
+    // /ТАЙМЕР
+    $(window).width() <= 700 && document.querySelector('.swiper-container') && new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        spaceBetween: 8,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+        },
+        // autoHeight: true
+    })
+    $(window).width() <= 1100 && $('.main__recommendation-block').appendTo('.recommendation')
     // /Page load
 });
