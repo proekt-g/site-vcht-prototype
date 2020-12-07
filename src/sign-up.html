@@ -167,55 +167,59 @@
         </div>
       </div>
     </header>
-    <main class="profile">
-      <section class="head">
-        <div class="container">
-          <a class="link-back" href="#">
-            <svg class="link-back__arrow" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg" fill="none">
-              <path fill="#fff" fill-opacity=".01" style="mix-blend-mode: multiply" d="M0 0h18v18h-18z" />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M7.811 9l3.97-3.97-1.061-1.061-5.03 5.03 5.03 5.03 1.061-1.061-3.97-3.97z"
-                fill="#fff"
-              />
-            </svg>
-            в профиль
-          </a>
-          <div class="head__title">Редактирование профиля</div>
+    <main class="sign">
+      <img class="bg-picture bg-picture--four" src="assets/images/sign-bg.svg" alt="" loading="lazy" />
+      <form class="form" method="POST" id="form-sign-in" enctype="multipart/form-data">
+        <div class="form__head">
+          <div class="form__big-title">Регистрация</div>
+          <div class="form__miss">
+            <div class="form__miss-text">Уже есть аккаунт?</div>
+            <a class="form__miss-link" href="#">Войдите в личный кабинет</a>
+          </div>
         </div>
-      </section>
-      <section class="edit">
-        <form class="container" method="POST" id="edit-form" enctype="multipart/form-data">
-          <div class="edit__avatar">
-            <img class="edit__avatar-picture" src="assets/images/avatar-edit.jpg" alt="" loading="lazy" />
-            <label class="edit__avatar-button button">
-              Изменить фото
-              <input class="edit__avatar-button-input" type="file" />
-            </label>
+        <div class="form__text">Фамилия</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Ивашвилевичев" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Имя</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Константин" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Отчество</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Борисович" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Почта</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="email" placeholder="example@email.ru" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Место работы</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Место работы" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Должность</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Ваша должность" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__text">Город</div>
+        <div class="form__input-wrapper">
+          <input class="form__input" type="text" placeholder="Ваш город" required />
+          <div class="form__input-error">Необходимо вписать фамилию</div>
+        </div>
+        <div class="form__footer">
+          <button class="form__button form__button--registration button">Зарегистрироваться</button>
+          <div class="form__miss">
+            <div class="form__miss-text">Нажимая кнопку «Зарегистрироваться», вы соглашаетесь с</div>
+            <a class="form__miss-link" href="#">условиями пользовательского соглашения</a>
           </div>
-          <div class="edit__form">
-            <div class="edit__text">Фамилия</div>
-            <input class="edit__input" type="text" placeholder="Ивашвилевичев" required />
-            <div class="edit__text">Имя</div>
-            <input class="edit__input" type="text" placeholder="Константин" required />
-            <div class="edit__text">Отчество</div>
-            <input class="edit__input" type="text" placeholder="Борисович" required />
-            <div class="edit__text">Почта</div>
-            <input class="edit__input" type="email" placeholder="example@email.ru" required />
-            <div class="edit__text">Место работы</div>
-            <input class="edit__input" type="text" placeholder="Место работы" required />
-            <div class="edit__text">Должность</div>
-            <input class="edit__input" type="text" placeholder="Ваша должность" required />
-            <div class="edit__text">Город</div>
-            <input class="edit__input" type="text" placeholder="Ваш город" required />
-            <div class="edit__buttons">
-              <button class="edit__button button">Сохранить данные профиля</button>
-              <a class="edit__button button" href="#">Отменить изменения</a>
-            </div>
-          </div>
-        </form>
-      </section>
+        </div>
+      </form>
     </main>
     <footer class="footer">
       <div class="footer__head">

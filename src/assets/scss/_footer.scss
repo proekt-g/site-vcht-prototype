@@ -1,12 +1,13 @@
 .footer {
-    margin-top: 120px;
+    // margin-top: 120px;
     background-color: var(--footer-color);
-    @media (max-width: 900px) {
-        margin-top: 80px;
-    }
-    @media (max-width: 500px) {
-        margin-top: 65px;
-    }
+    // @media (max-width: 900px) {
+    // margin-top: 80px;
+    // }
+    // @media (max-width: 500px) {
+    // margin-top: 65px;
+    // }
+
     &__head {
         display: flex;
         padding: 20px 0;
@@ -16,6 +17,7 @@
         margin: 0 auto;
         padding-right: 10px;
         padding-left: 10px;
+
         @media (max-width: 900px) {
             padding-right: 32px;
             padding-left: 32px;
@@ -31,6 +33,7 @@
             font-weight: normal;
             font-size: 14px;
             line-height: 20px;
+            color: #fff;
         }
     }
 
@@ -64,7 +67,7 @@
     &__down {
         padding-right: calc(((100vw - #{$content-width}) / 2) - 10px);
         padding-left: calc(((100vw - #{$content-width}) / 2) - 10px);
-        border-top: 1px solid var(--light-blue-type-one);
+        border-top: 1px solid var(--footer-border-color);
         display: flex;
         justify-content: space-between;
         @media (max-width: 900px) {
@@ -83,7 +86,8 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 20px;
-        color: var(--grey-type-thirteen);
+        // color: var(--grey-type-thirteen);
+        color: var(--footer-text-color);
         &:first-child {
             margin-right: 20px;
             @media (max-width: 700px) {

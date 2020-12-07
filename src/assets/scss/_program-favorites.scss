@@ -1,6 +1,30 @@
 .program-favorites {
     .content {
         margin-top: 50px;
+        .filter-link {
+            &:hover {
+                .filter-link__star {
+                    path {
+                        fill: #fff;
+                        opacity: 1;
+                    }
+                }
+            }
+            &__star {
+                margin-right: 8px;
+                path {
+                    transition: 0.3s;
+                }
+            }
+            &--active {
+                .filter-link__star {
+                    path {
+                        fill: #fff;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
         &__more {
             display: flex;
             justify-content: center;

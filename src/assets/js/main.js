@@ -1,6 +1,7 @@
 document.onreadystatechange = function () {
     if (document.readyState === "interactive") {
         $(window).width() <= 700 && $('.main__content-head-ui').appendTo('.main__content-timer')
+        $(window).width() <= 700 && $('.information__inner').prepend($('.information__logo'))
     }
 }
 window.addEventListener("load", function () {
@@ -29,6 +30,11 @@ window.addEventListener("load", function () {
                 alert("Ошибка. Данные не отправлены.")
             },
         })
+    }
+    function closeModal() {
+        scrollEmulation()
+        $(".modal-overlay").removeClass("modal-overlay--active")
+        $(".modal").removeClass("modal--active")
     }
     function scrollEmulation() {
         let documentWidth = parseInt(document.documentElement.clientWidth)
@@ -64,6 +70,56 @@ window.addEventListener("load", function () {
         ajaxRequest("edit-form", "test.php")
     })
     // /Фильтр на странице profile.html 
+    // Фильтр на странице broadcast.html 
+    $("#broadcast-form").on("input submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("broadcast-form", "test.php")
+    })
+    // /Фильтр на странице broadcast.html 
+    // Фильтр на странице exponent.html 
+    $("#exponent-program").on("input submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("exponent-program", "test.php")
+    })
+    // /Фильтр на странице exponent.html 
+    // Форма регистрации 
+    $("#form-sign-up").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("form-sign-up", "test.php")
+    })
+    // /Форма регистрации 
+    // Форма входа 
+    $("#form-sign-in").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("form-sign-in", "test.php")
+    })
+    // /Форма входа 
+    // Форма возобновления пароля form-sign-new-password
+    $("#form-sign-reset").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("form-sign-reset", "test.php")
+    })
+    // /Форма возобновления пароля 
+    // Форма нового пароля 
+    $("#form-sign-new-password").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("form-sign-new-password", "test.php")
+    })
+    // /Форма нового пароля 
+    // Форма отправки сообщения в модальном окне 
+    $("#message-speaker").on("submit", (e) => {
+        e.preventDefault()
+        ajaxRequest("message-speaker", "test.php")
+        // Закрытие текущего модального окна с формай
+        closeModal()
+        // /Закрытие текущего модального окна с формай
+        // Вызов второго попапа
+        scrollEmulation(),
+            $('.modal-overlay').toggleClass('modal-overlay--active'),
+            $('.modal--thanks').toggleClass('modal--active')
+        // /Вызов второго попапа
+    })
+    // /Форма отправки сообщения в модальном окне
     $("button.menu__desktop-element").on("click", function () {
         $(this).toggleClass('menu__desktop-element--open')
         $('.header-modal__nav').fadeToggle(400)
@@ -84,19 +140,19 @@ window.addEventListener("load", function () {
             $('.header-modal__language').fadeOut(100)
         )
     })
-    $(".filter__switch-text").on("click", function () {
-        $(this).parent().toggleClass("filter__switch--active")
+    $(".filter-switch__text").on("click", function () {
+        $(this).parent().toggleClass("filter-switch--active")
         $(this).next().slideToggle(400)
     })
-    $(".filter__switch-modal-label").on("click", function (e) {
+    $(".filter-switch__modal-label").on("click", function (e) {
         $(this)
-            .parents(".filter__switch")
-            .children(".filter__switch-text")
+            .parents(".filter-switch")
+            .children(".filter-switch__text")
             .text($(e.target).text())
-        $(this).parents(".filter__switch-modal").toggle(0)
+        $(this).parents(".filter-switch__modal").toggle(0)
         $(this)
-            .parents(".filter__switch")
-            .toggleClass("filter__switch--active")
+            .parents(".filter-switch")
+            .toggleClass("filter-switch--active")
     })
     $(".crumbs__crumb").on("click", function (e) {
         $(e.target).parents('.filter-top').length && ($(this).toggleClass('crumbs__crumb--active'), filterContentBlock())
@@ -135,8 +191,15 @@ window.addEventListener("load", function () {
             moreElement.toggleClass('avatars__more-element--active'),
             moreElement.find('.avatars__more-text').slideToggle(400)
         )
+        const enterMessage = (($(e.target).hasClass('avatars__avatar-modal-link') && $(e.target)) || ($(e.target).parents('.avatars__avatar-modal-link').length && $($(e.target).parents('.avatars__avatar-modal-link')[0])) || null);
+        enterMessage && (
+            scrollEmulation(),
+            $('.modal-overlay').toggleClass('modal-overlay--active'),
+            $('.modal--message').toggleClass('modal--active')
+        )
     })
-    $('.content__more').on('click', () => {
+    $('.content__more').on('click', (e) => {
+        e.preventDefault()
         $('.card--hidden').removeClass('card--hidden')
     })
     $('.main__content-more').on('click', () => {
@@ -158,6 +221,38 @@ window.addEventListener("load", function () {
     $('.participants__toggle-button').on('click', function () {
         $('.participants__toggle-button').removeClass('participants__toggle-button--active')
         $(this).addClass('participants__toggle-button--active')
+    })
+    $(".modal__close").on("click", closeModal)
+    $(".modal__content-close").on("click", (e) => {
+        e.preventDefault();
+        closeModal()
+    })
+    $(".modal-overlay").on("click", (e) => {
+        if ($(e.target).hasClass("modal-overlay--active")) closeModal()
+    })
+    $('.button--message').on('click', (e) => {
+        scrollEmulation()
+        $('.modal-overlay').toggleClass('modal-overlay--active')
+        $('.modal--message').toggleClass('modal--active')
+    })
+    $('.form__input-eye').on('click', function () {
+        $(this).parents('.form__input-wrapper').toggleClass('form__input-wrapper--look')
+        !$(this).parents('.form__input-wrapper').hasClass('form__input-wrapper--look')
+            ? $(this).parents('.form__input-wrapper').find('.form__input').attr('type', 'password')
+            : $(this).parents('.form__input-wrapper').find('.form__input').attr('type', 'text')
+    })
+    $('.box-landing__button').on('click', () => {
+        scrollEmulation()
+        $('.modal-overlay').toggleClass('modal-overlay--active')
+        $('.modal__concept').toggleClass('modal--active')
+    })
+    $('.information__more').on('click', function () {
+        $(this).toggleClass('information__more--active')
+        $('.information__contacts-block').slideToggle(400)
+    })
+    $('.cards__button').on('click', function () {
+        $(this).parent().find('.cards__button--active').removeClass('cards__button--active')
+        $(this).addClass('cards__button--active')
     })
     // /event
     // ----------------------------------------------
@@ -249,8 +344,186 @@ window.addEventListener("load", function () {
         },
         // autoHeight: true
     })
+
     $(window).width() <= 1100 && $('.main__recommendation-block').appendTo('.recommendation')
     $(window).width() <= 900 && $('.interesting .section-head__link').appendTo('.interesting .container')
     $(window).width() <= 900 && $('.webinars .section-head__link').appendTo('.webinars .container')
+
+    new Swiper('.exhibition__organizator', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        grabCursor: true,
+        navigation: {
+            nextEl: '.exhibition__organizator-wrapper .swiper-button-next',
+            prevEl: '.exhibition__organizator-wrapper .swiper-button-prev',
+        },
+        pagination: {
+            el: '.exhibition__organizator-wrapper .swiper-pagination',
+            type: 'bullets',
+        },
+        breakpoints: {
+            501: { slidesPerView: 'auto', }
+        }
+    })
+    new Swiper('.exhibition__partners', {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        grabCursor: true,
+        navigation: {
+            nextEl: '.exhibition__partners-wrapper .swiper-button-next',
+            prevEl: '.exhibition__partners-wrapper .swiper-button-prev',
+        },
+        pagination: {
+            el: '.exhibition__partners-wrapper .swiper-pagination',
+            type: 'bullets',
+        },
+    })
+    new Swiper(".poster-slider__slider", {
+        spaceBetween: 20,
+        slidesPerView: 1,
+        grabCursor: true,
+        navigation: {
+            nextEl: "#first-slider-arrow-right",
+            prevEl: "#first-slider-arrow-left",
+        },
+        breakpoints: {
+            501: {
+                slidesPerView: "auto",
+            }
+        },
+        on: {
+            slideChange: ({ slides, activeIndex }) => {
+                slides.each((slide, index) => {
+                    index < activeIndex
+                        ? $(slide).addClass("swiper-slide-prev-prev")
+                        : $(slide).removeClass("swiper-slide-prev-prev")
+                })
+                slides.each((slide, index) => {
+                    index > activeIndex
+                        ? $(slide).addClass("swiper-slide-next-next")
+                        : $(slide).removeClass("swiper-slide-next-next")
+                })
+            },
+            reachEnd: ({ $el }) => {
+                $el.children(".poster-slider__shadow").addClass(
+                    "poster-slider__shadow--hidden"
+                )
+                $el.children(".poster-slider__dark").addClass(
+                    "poster-slider__dark--hidden"
+                )
+            },
+            fromEdge: ({ $el }) => {
+                $el.children(".poster-slider__shadow").removeClass(
+                    "poster-slider__shadow--hidden"
+                )
+                $el.children(".poster-slider__dark").removeClass(
+                    "poster-slider__dark--hidden"
+                )
+            },
+            init: ({ slides, activeIndex }) => {
+                slides.each((slide, index) => {
+                    index > activeIndex
+                        ? $(slide).addClass("swiper-slide-next-next")
+                        : $(slide).removeClass("swiper-slide-next-next")
+                })
+            }
+        },
+    })
+    let offset = +3;
+    let date = new Date(new Date().getTime() + offset * 3600 * 1000).toUTCString().replace(/ GMT/, "")
+    let currentHour = date.replace(/^.+, \d{2} .+ /, '').replace(/:\d{2}:\d{2}$/, '')
+    let currentMinutes = date.replace(/^.+, \d{2} .+ /, '').replace(/^\d{2}:/, '').replace(/:\d{2}$/, '')
+    $('.head__time-online-hour').text(currentHour)
+    $('.head__time-online-minute').text(currentMinutes)
+    $('.head__time-online-second').text(date.replace(/^.+, \d{2} .+ /, '').replace(/^\d{2}:\d{2}:/, ''))
+
+    $(".head__time-online").length && setInterval(() => {
+        offset = +3;
+        date = new Date(new Date().getTime() + offset * 3600 * 1000).toUTCString().replace(/ GMT/, "")
+        $('.head__time-online-hour').text(currentHour)
+        $('.head__time-online-minute').text(currentMinutes)
+        $('.head__time-online-second').text(date.replace(/^.+, \d{2} .+ /, '').replace(/^\d{2}:\d{2}:/, ''))
+
+    }, 1000);
+
+
+    $('.slider').each((index, item) => {
+        $(item).find('.slider__line--active').css('left', ((parseInt(currentHour * 60) + parseInt(currentMinutes)) - 420) * 2.63 + 'px')
+        $(item).find('.slider__number--active').css('left', (((parseInt(currentHour * 60) + parseInt(currentMinutes)) - 420) * 2.63) - 42 + 'px')
+
+        let indexInitialSlide, allWidthSlide = 0, marginLeftSlide = 0, startPosition = 0, activeSlideWidth = 0;
+        $(item).find('.slider__slide').each((index, item) => {
+
+
+
+            const startHour = parseInt($(item).data('start-hour')),
+                startMinutes = parseInt($(item).data('start-minutes')),
+                endHour = parseInt($(item).data('hour-end')),
+                endMinutes = parseInt($(item).data('minutes-end'));
+
+            index === 0
+                // ? $(item).css('margin-left', ((((startHour * 60) + startMinutes) - 420) * 2.63) + 'px')
+                // : $(item).css('margin-left', (((((startHour * 60) + startMinutes) - 420) * 2.63) - allWidthSlide) + 'px')
+                ? $(item).css('left', ((((startHour * 60) + startMinutes) - 420) * 2.63) + 'px')
+                : $(item).css('left', (((((startHour * 60) + startMinutes) - 420) * 2.63)) + 'px')
+
+            const widthSlide = (((endHour * 60) + endMinutes) - ((startHour * 60) + startMinutes)) * 2.63;
+            allWidthSlide += (widthSlide + parseInt(item.style.marginLeft));
+
+            $(item).css('flex', `0 0 ${widthSlide}px`)
+            $(item).css('width', `${widthSlide}px`)
+
+            $(item).css('flex', `0 0 ${$(item).data('hour') * 157}px`)
+            $(item).css('width', `${$(item).data('hour') * 157}px`)
+            if ($(item).data('active')) {
+                startPosition = parseInt($(item).css('left'))
+                activeSlideWidth = parseInt($(item).css('width'))
+            }
+        })
+
+
+        setTimeout(() => {
+            let maxHeightSlider = 0;
+            $(item).find('.slider__slide').each((index, item) => {
+                // console.log($(item).outerHeight(), maxHeightSlide)
+                if (maxHeightSlider < $(item).outerHeight()) maxHeightSlider = $(item).outerHeight()
+
+            })
+            $(item).find('.swiper-slide').height(maxHeightSlider + 'px')
+
+            const widthBlockSlider = parseInt($(item).width())
+            // console.log(widthBlockSlider)
+            // maxHeightSlide = $(item).outerHeight()
+            // console.log($(item), maxHeightSlide)
+            new Swiper(`${'.' + $(item).attr('class').replace(/ /g, '.')} .swiper-container`, {
+                slidesPerView: 'auto',
+                // spaceBetween: 20,
+                grabCursor: true,
+                // centeredSlides: true,
+                // centerSlidesBounds: true,
+                // initialSlide: indexInitialSlide,
+                navigation: {
+                    nextEl: '.' + $(item).attr('class').replace(/ /g, '.') + ' .' + $(item).find('.slider__arrow--right').attr('class').replace(/ /g, '.'),
+                    prevEl: '.' + $(item).attr('class').replace(/ /g, '.') + ' .' + $(item).find('.slider__arrow--left').attr('class').replace(/ /g, '.'),
+                },
+                // on: {
+                //     slideChange: () => {
+                //         console.log('hello')
+                //         $(item).find('.swiper-wrapper')[0].style.transform = 'translate3d(' + ($(item).find('.swiper-wrapper')[0].style.transform.replace(/translate3d\(/, ``).replace(/px, 0px, 0px\)/, '') - parseInt($(item).find('.swiper-slide-active')[0].style.marginLeft) / 3) + 'px, 0px, 0px)'
+                //     }
+                // }
+                // breakpoints: {
+                //     501: { slidesPerView: 'auto', }
+                // }
+            })
+            // console.log($(item).find('.swiper-wrapper')[0].style.transform.replace(/translate3d\(/, ``).replace(/px, 0px, 0px\)/, '') - parseInt($(item).find('.swiper-slide-active')[0].style.marginLeft) / 3)
+            console.log((startPosition - (widthBlockSlider / 2) + (activeSlideWidth / 2) + 50))
+            setTimeout(() => {
+                $(window).width() > 500
+                    ? $(item).find('.swiper-wrapper')[0].style.transform = 'translate3d(-' + (startPosition - (widthBlockSlider / 2) + (activeSlideWidth / 2) + 50) + 'px, 0px, 0px)'
+                    : $(item).find('.swiper-wrapper')[0].style.transform = 'translate3d(-' + (startPosition + 31) + 'px, 0px, 0px)'
+            }, 500)
+        }, 500)
+    })
     // /Page load
 });

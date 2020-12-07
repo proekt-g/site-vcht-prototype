@@ -1,14 +1,16 @@
 $default-font: "Graphik LCG";
 $content-width: 1024px;
 $heightHeader: 92px;
-$heightFooter: 240px;
+$heightFooter: 124px;
 $minHeightMain: calc(100vh - (#{$heightHeader} + #{$heightFooter}));
 $mainColor: #000;
 $mainWeight: 700;
 $mainSize: 16px;
 :root {
     --bg-color: #eceef5;
-    --footer-color: #e4e7f3;
+    --footer-color: #1e0c35;
+    --footer-border-color: rgba(206, 213, 237, 0.3);
+    --footer-text-color: rgba(255, 255, 255, 0.5);
 
     --light-grey-type-one: #dddfe6;
     --grey-type-one: #6d6f73;
@@ -28,6 +30,14 @@ $mainSize: 16px;
     --grey-type-fiveteen: #8e8f93;
     --grey-type-sixteen: #ced2d9;
     --grey-type-seventeen: #979798;
+
+    --grey-type-eighteen: #a3a6c5;
+    --grey-type-nineteen: rgba(196, 196, 196, 0.2);
+    --grey-type-twenty: #979abd;
+    --grey-type-twenty-one: #9a9da2;
+
+    --violet-type-one: #31397f;
+
     --red-type-one: #dc3701;
     --light-blue-type-one: #ced5ed;
     --light-blue-type-two: #dfe6f0;

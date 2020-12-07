@@ -5,7 +5,7 @@
             &:hover {
                 .filter-link__star {
                     path {
-                        fill: #000;
+                        fill: #fff;
                         opacity: 1;
                     }
                 }
@@ -19,7 +19,7 @@
             &--active {
                 .filter-link__star {
                     path {
-                        fill: #000;
+                        fill: #fff;
                         opacity: 1;
                     }
                 }
@@ -229,128 +229,6 @@
             @media (max-width: 700px) {
                 display: block;
                 margin-top: 174px;
-            }
-        }
-        &__folder {
-            filter: drop-shadow(0px 6px 20px rgba(63, 66, 91, 0.12));
-            flex: 0 1 calc(33.33% - 20px);
-            position: relative;
-            margin-top: 154px;
-            cursor: default;
-            text-align: left;
-            @media (max-width: 1100px) {
-                flex: 0 1 calc(50% - 20px);
-            }
-            &:first-child {
-                @media (max-width: 700px) {
-                    margin-bottom: 174px;
-                }
-            }
-            &:hover {
-                .interesting__folder-inner {
-                    height: calc(100% - 25px);
-                }
-                .interesting__folder-card {
-                    transform: rotate(-2deg);
-                    top: -143px;
-                }
-                .interesting__folder-picture--second {
-                    top: -155px;
-                }
-                .interesting__folder-picture--first {
-                    top: -169px;
-                    transform: rotate(2deg);
-                }
-            }
-            &::after {
-                content: url(../images/folfer-top.svg);
-                position: absolute;
-                top: -24px;
-                right: 0;
-                z-index: 1;
-            }
-            &::before {
-                content: "";
-                position: absolute;
-                top: -10px;
-                left: 0;
-                width: 100%;
-                height: 90px;
-                background-color: var(--grey-type-sixteen);
-                border-radius: 22px;
-            }
-            &--hidden {
-                @media (max-width: 1100px) {
-                    display: none;
-                }
-            }
-            &-picture {
-                border-radius: 15px;
-                position: absolute;
-                top: -154px;
-                max-width: calc(100% - 30px);
-                left: 15px;
-                height: 180px;
-                transition: 0.3s;
-            }
-            &-inner {
-                padding: 20px;
-                background: #ffffff;
-                border-radius: 20px;
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                z-index: 2;
-                height: 100%;
-                transition: 0.3s;
-            }
-
-            &-card {
-                position: absolute;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: calc(100% - 20px);
-                height: 180px;
-                background-color: var(--light-blue-type-four);
-                border-radius: 15px;
-                z-index: 1;
-                top: -154px;
-                left: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                padding-top: 25px;
-                transition: 0.3s;
-                &-img {
-                    max-width: 260px;
-                    height: 130px;
-                }
-            }
-            &-title {
-                font-family: Gilroy;
-                font-size: 18px;
-                line-height: 110%;
-                letter-spacing: 0.01em;
-            }
-            &-text {
-                font-weight: normal;
-                font-size: 15px;
-                line-height: 22px;
-                color: var(--grey-type-one);
-                margin: 8px 0 15px;
-                max-height: 88px;
-                transition: 0.3s;
-                overflow: hidden;
-            }
-            &-link {
-                font-weight: normal;
-                font-size: 14px;
-                line-height: 20px;
-                color: var(--dark-blue-type-one);
-                display: flex;
-                flex-grow: 1;
-                align-items: flex-end;
             }
         }
     }
