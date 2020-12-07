@@ -1,6 +1,6 @@
 document.onreadystatechange = function () {
     if (document.readyState === "interactive") {
-        $(window).width() <= 700 && $('.main__content-head-ui').appendTo('.main__content-timer')
+        $(window).width() <= 700 && $('.block-head__ui').appendTo('.main__content-timer')
         $(window).width() <= 700 && $('.information__inner').prepend($('.information__logo'))
     }
 }
@@ -70,12 +70,12 @@ window.addEventListener("load", function () {
         ajaxRequest("edit-form", "test.php")
     })
     // /Фильтр на странице profile.html 
-    // Фильтр на странице broadcast.html 
-    $("#broadcast-form").on("input submit", (e) => {
+    // Фильтр на странице exhibition.html 
+    $("#exhibition-form").on("input submit", (e) => {
         e.preventDefault()
-        ajaxRequest("broadcast-form", "test.php")
+        ajaxRequest("exhibition-form", "test.php")
     })
-    // /Фильтр на странице broadcast.html 
+    // /Фильтр на странице exhibition.html 
     // Фильтр на странице exponent.html 
     $("#exponent-program").on("input submit", (e) => {
         e.preventDefault()
@@ -254,6 +254,10 @@ window.addEventListener("load", function () {
         $(this).parent().find('.cards__button--active').removeClass('cards__button--active')
         $(this).addClass('cards__button--active')
     })
+    $('.broadcast .content__more').on('click', function () {
+        $(this).toggleClass('content__more--active');
+        $('.content__chat').slideToggle(400)
+    })
     // /event
     // ----------------------------------------------
     // unique function
@@ -411,6 +415,8 @@ window.addEventListener("load", function () {
                 $el.children(".poster-slider__dark").addClass(
                     "poster-slider__dark--hidden"
                 )
+                $($el).parents('.poster-slider').find('.swiper-slide-next-next').removeClass('swiper-slide-next-next')
+                $($el).parents('.poster-slider').find('.poster-slider__arrow').fadeOut(100)
             },
             fromEdge: ({ $el }) => {
                 $el.children(".poster-slider__shadow").removeClass(
@@ -419,6 +425,7 @@ window.addEventListener("load", function () {
                 $el.children(".poster-slider__dark").removeClass(
                     "poster-slider__dark--hidden"
                 )
+                $(window).width() > 900 && $($el).parents('.poster-slider').find('.poster-slider__arrow').fadeIn(100)
             },
             init: ({ slides, activeIndex }) => {
                 slides.each((slide, index) => {

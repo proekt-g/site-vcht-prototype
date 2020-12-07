@@ -389,6 +389,18 @@
                 opacity: 1;
             }
         }
+        &__video {
+            height: 340px;
+            border-radius: 15px;
+            max-width: 100%;
+            width: 100%;
+            @media (max-width: 900px) {
+                height: 306px;
+            }
+            @media (max-width: 500px) {
+                height: calc((100vw - 32px) * 0.5625);
+            }
+        }
         &__picture {
             height: 340px;
             position: relative;
